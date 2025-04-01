@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Arkusze maturalne z fizyki</h5>
+                <p class="card-text">Znajdziesz tutaj arkusze maturalne z fizyki z różnych lat, wydawnictw i typów egzaminów.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Filtry</h5>
+                <div class="btn-group mb-3" role="group" id="filterGroupLevel">
+                    <button type="button" class="btn btn-outline-primary filter-btn active" data-level="rozszerzony">Poziom rozszerzony</button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-level="podstawowy">Poziom podstawowy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-3">
+                    <input type="text" id="searchMatura" class="form-control" placeholder="Szukaj...">
+                </div>
+                <div class="btn-group mb-3" role="group" id="filterGroupPublisher">
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-publisher="CKE">CKE</button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-publisher="Nowa Era">Nowa Era</button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-publisher="Operon">Operon</button>
+                </div>
+                <div class="table-responsive">
+                    <table id="tableMatura" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Typ</th>
+                                <th>Wydawnictwo</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for matura in matury %}
+                            <tr data-level="{{ matura.level }}">
+                                <td>{{ matura.date }}</td>
+                                <td>{{ matura.type }}</td>
+                                <td>{{ matura.publisher }}</td>
+                                <td>
+                                    <a href="{{ matura.link }}" class="btn btn-primary btn-sm" target="_blank">Arkusz</a>
+                                    {% if matura.answer_link %}
+                                    <a href="{{ matura.answer_link }}" class="btn btn-success btn-sm" target="_blank">Odpowiedzi</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/matura.js') }}"></script>
+{% endblock %} 

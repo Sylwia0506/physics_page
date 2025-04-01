@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Strona główna</a></li>
+                <li class="breadcrumb-item"><a href="{{ url_for('topics') }}">Działy</a></li>
+                <li class="breadcrumb-item active">{{ topic.name }}</li>
+            </ol>
+        </nav>
+        
+        <h1 class="mb-4">{{ topic.name }}</h1>
+
+        <div class="alert alert-info">
+            W tej chwili nie ma dostępnych zadań dla tego działu. Zapraszamy wkrótce!
+        </div>
+    </div>
+</div>
+{% endblock %} 

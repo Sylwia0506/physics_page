@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Szukaj działu...">
+                <button class="btn btn-outline-secondary" type="button" id="clearSearch">
+                    <i class="bi bi-x-lg"></i> Wyczyść
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" id="topicsContainer">
+        {% for topic in topics %}
+        <div class="col-md-4 mb-4" data-topic-name="{{ topic.name.lower() }}">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ topic.name }}</h5>
+                    <p class="card-text">{{ topic.description }}</p>
+                    <a href="{{ url_for('topic', topic_slug=topic.slug) }}" class="btn btn-primary">
+                        Przejdź do działu
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const clearButton = document.getElementById('clearSearch');
+    const topicCards = document.querySelectorAll('[data-topic-name]');
+
+    function filterTopics() {
+        const searchText = searchInput.value.toLowerCase();
+        
+        topicCards.forEach(card => {
+            const topicName = card.dataset.topicName;
+            if (topicName.includes(searchText)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    searchInput.addEventListener('input', filterTopics);
+    
+    clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        filterTopics();
+    });
+});
+</script>
+{% endblock %} 

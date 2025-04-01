@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Witaj w aplikacji do nauki fizyki!</h5>
+                <p class="card-text">Ta aplikacja pomoże Ci w nauce fizyki poprzez:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Przeglądanie zadań z różnych działów fizyki</li>
+                    <li class="list-group-item">Ćwiczenie rozwiązywania zadań</li>
+                    <li class="list-group-item">Sprawdzanie swoich odpowiedzi</li>
+                    <li class="list-group-item">Śledzenie postępów w nauce</li>
+                </ul>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('topics') }}" class="btn btn-primary">Rozpocznij naukę</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Arkusze maturalne</h5>
+                <p class="card-text">Znajdziesz tutaj arkusze maturalne z fizyki z różnych lat, wydawnictw i typów egzaminów.</p>
+                <div class="text-center">
+                    <a href="{{ url_for('matura') }}" class="btn btn-primary">Przejdź do arkuszy maturalnych</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
