@@ -13,8 +13,8 @@ A web application for learning physics, featuring interactive content and exam p
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/maths_page.git
-cd maths_page
+git clone https://github.com/yourusername/physics_page.git
+cd physics_page
 ```
 
 2. Create and activate a virtual environment:
@@ -81,6 +81,9 @@ maths_page/
 - Gunicorn
 - HTML/CSS/JavaScript
 - BeautifulSoup4 (for data scraping)
+
+## Link
+  https://physics-page-ht76.onrender.com/
 
 ## License
 
